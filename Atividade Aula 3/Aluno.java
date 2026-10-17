@@ -24,17 +24,28 @@ class Aluno{
     }
 
     public void setMedia(double media) {
+       if (media < 0){
+         throw new IllegalArgumentException("A média não pode ser negativa: " + media);
+       }
+        this.media = media;
+    }
+
+    public Aluno(String nome_Aluno, String matricula_Aluno, double media){
+        this.nome_Aluno = nome_Aluno;
+        this.matricula_Aluno = matricula_Aluno;
         this.media = media;
     }
 
    void foiAprovado(boolean mediaTotal){
-    if (media >= 7){
-        mediaTotal = true; 
-        System.out.println("Aprovado");
+        if (getMedia() >= 7){      
+            System.out.println("Aprovado");
 
-    }else{
-        System.out.println("Reprovado");
-    }
+        }else if(getMedia() <= 0 ){
+            System.out.println("Media invalida");
+        }
+        else{
+            System.out.println("Reprovado");
+        }
    }
    
 }
